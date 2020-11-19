@@ -5,8 +5,12 @@
  *      Author: eric
  */
 
+#include "tester.h"
+#include "print_ts.h"
+
 int main() {
-	//Call methods from tester.cpp
+	startThreads("word",6,P5,8,777);
+	joinThreads();
 }
 
 

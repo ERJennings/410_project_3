@@ -28,6 +28,8 @@ void startThreads(std::string s, int numThreads, WHICH_PRINT wp, int numTimesToP
 		thds.push_back(thread(printingFunction,s,wp,numTimesToPrint));
 	}
 
+	//need to use delay somehow
+
 }
 
 void setCancelThreads(bool bCancel) {

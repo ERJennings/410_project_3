@@ -1,3 +1,17 @@
 How do you determine the number of threads you should launch to realistically test your application?
 
+To do this, first disable mutexes in your code. Then repeatedly test with an increasing number of threads.
+Once you have reached a number of threads such that interrupts are reliably causing issues, restore the mutexes.
+If the same number of threads can be run without any issues once the mutexes are restored, the code is functional.
+
+Source: https://github.com/CNUClasses/CPSC410/blob/master/content/Lectures/mutex_intro.pdf
+
+
+
 If you are launching several threads, under what circumstances would these threads not run in parallel on a modern processor?
+
+They will not run in parallel if the number of threads being run is greater than twice the number of cores in your CPU.
+This is because modern processors divide their cores into two CPUs (hyperthreading).
+For example, a four-core CPU can run at most 8 threads at once, so if there are 9 or more threads they will not run in parallel.
+
+Source: https://eli.thegreenplace.net/2016/c11-threads-affinity-and-hyperthreading/

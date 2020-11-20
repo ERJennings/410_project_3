@@ -25,7 +25,7 @@ void startThreads(std::string s, int numThreads, WHICH_PRINT wp, int numTimesToP
 	for (int i = 0; i < numThreads; i++) {
 		//thds.push_back( thread(fun1,pad));
 		//why is this causing an error?
-		thds.push_back(thread(printingFunction,s,wp,numTimesToPrint));
+		thds.push_back(thread(printingFunction,s,wp,numTimesToPrint,millisecond_delay));
 	}
 
 	//need to use delay somehow
@@ -42,27 +42,35 @@ void joinThreads() {
 	}
 }
 
-void printingFunction(std::string s, WHICH_PRINT wp, int numTimesToPrint) {
+void printingFunction(std::string s, WHICH_PRINT wp, int numTimesToPrint, int millisecond_delay) {
+
+	//Refer to THREAD RACE CONDITION for sleep
+
 	for (int i =  0; i < numTimesToPrint; i++) {
 
 		if (wp == P1) {
 			PRINT1(s);
+			this_thread::sleep_for(chrono::milliseconds(millisecond_delay));
 		}
 
 		else if (wp == P2) {
 			PRINT2(s,s);
+			this_thread::sleep_for(chrono::milliseconds(millisecond_delay));
 		}
 
 		else if (wp == P3) {
 			PRINT3(s,s,s);
+			this_thread::sleep_for(chrono::milliseconds(millisecond_delay));
 		}
 
 		else if (wp == P4) {
 			PRINT4(s,s,s,s);
+			this_thread::sleep_for(chrono::milliseconds(millisecond_delay));
 		}
 
 		else {
 			PRINT5(s,s,s,s,s);
+			this_thread::sleep_for(chrono::milliseconds(millisecond_delay));
 		}
 	}
 }

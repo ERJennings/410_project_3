@@ -50,5 +50,7 @@ void PRINT4(std::string &txt, std::string &txt1, std::string &txt2, std::string 
 }
 
 void PRINT5(std::string &txt, std::string &txt1, std::string &txt2, std::string &txt3, std::string &txt4) {
+	m.lock();
 	cout << txt << txt1 << txt2 << txt3 << txt4 << endl;
+	m.unlock();
 }

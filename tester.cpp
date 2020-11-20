@@ -57,11 +57,8 @@ void startThreads(std::string s, int numThreads, WHICH_PRINT wp, int numTimesToP
 
 	for (int i = 0; i < numThreads; i++) {
 		//thds.push_back( thread(fun1,pad));
-		//why is this causing an error?
 		thds.push_back(thread(printingFunction,s,wp,numTimesToPrint,millisecond_delay));
 	}
-
-	//need to use delay somehow
 
 }
 
